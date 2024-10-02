@@ -34,23 +34,17 @@ def test_function_with_input(func, simulated_input, expected_output):
     printed_output = fake_out.getvalue().strip()
     return printed_output == expected_output
 
-def run_tests():
-  print("Don't forget to rerun the codeblock that defines your function each time you make changes...\n")
-  function_name = "greeting"
-  if not any([s == function_name for s in globals()]):
-    print(f"Function {function_name} not found")
-    print("Make sure you run the code block with your function and check the name")
-  else:
+def run_tests(func_to_test):
     for i in range(len(test_cases)):
       print(f"Test case {i+1}, {test_cases[i][0][0]}: ", end="\t")
-      if test_function_with_input(greeting, test_cases[i][0], test_cases[i][1]):
+      if test_function_with_input(func_to_test, test_cases[i][0], test_cases[i][1]):
         print(passed_str)
       else:
         print(failed_str)
-
+    
     for i in range(len(test_cases)):
       print(f"Hidden test case {i+1}: ", end="\t")
-      if test_function_with_input(greeting, hidden_test_cases[i][0], hidden_test_cases[i][1]):
+      if test_function_with_input(func_to_test, hidden_test_cases[i][0], hidden_test_cases[i][1]):
         print(passed_str)
       else:
         print(failed_str)
